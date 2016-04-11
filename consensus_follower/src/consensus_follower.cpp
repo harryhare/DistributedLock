@@ -23,7 +23,7 @@
 #include <netdb.h>
 #include <arpa/inet.h>
 
-#include "message.h"
+#include "Message.h"
 
 using namespace std;
 
@@ -111,7 +111,7 @@ void ProcessClient()
 				if(i==listen_sockfd)
 				{//accept
 					struct sockaddr_in client_addr;
-					int len=sizeof(client_addr);
+					unsigned int len=sizeof(client_addr);
 					int client_fd=accept(listen_sockfd,(struct sockaddr*)&client_addr,&len);
 					if(client_fd<0)
 					{
