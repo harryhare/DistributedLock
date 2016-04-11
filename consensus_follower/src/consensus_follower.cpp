@@ -99,11 +99,11 @@ void ProcessClient()
 	{
 		memcpy(&readfds,&master,sizeof(master));
 		int n_ready=select(maxfd+1,&readfds,NULL,NULL,NULL);
-		if(error==-1)
+		if(n_ready==-1)
 		{
 			perror("select error");
 		}
-		for(int i=0;i<maxfd && n_ready>0;i++)
+		for(int i=0;i<=maxfd && n_ready>0;i++)
 		{
 			if(FD_ISSET(i,&readfds))
 			{
@@ -143,10 +143,8 @@ void ProcessClient()
 					}
 					else
 					{
-						static char buffer[1024];
-						int len=recv(i,buffer,sizeof(buffer),0);
-						buffer[len]=0;
-						cout<<buffer<<endl;
+						buffer[i][len]=0;
+						cout<<buffer[i]<<endl;
 						send(i,"ok\n",3,0);
 //						buff_len[i]+=len;
 //						if(buff_len[i]>=(int)sizeof(int))
