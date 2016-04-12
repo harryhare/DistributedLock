@@ -122,7 +122,7 @@ void ProcessClient()
 						perror("accept");
 						continue;
 					}
-					cout<<"incoming fd"<<client_fd<<" from "<<inet_ntoa(client_addr.sin_addr)<<":"<<ntohs(client_addr.sin_port)<<endl;
+					cout<<"incoming fd "<<client_fd<<" from "<<inet_ntoa(client_addr.sin_addr)<<":"<<ntohs(client_addr.sin_port)<<endl;
 					error=fcntl(client_fd,F_SETFD,O_NONBLOCK);
 					if(error<0)
 					{
@@ -141,6 +141,9 @@ void ProcessClient()
 					int len=recv(i,buffer[i]+buff_len[i],sizeof(buffer[0])-buff_len[i],0);
 					if(len<=0)
 					{
+						//log
+						cout<<"closed fd "<<i<<endl;
+
 						close(i);
 						FD_CLR(i,&master);
 						continue;
@@ -165,7 +168,19 @@ void ProcessClient()
 
 								//log
 								cout<<"recv "<<m.total_length<<endl;
-								cout<<"operate"<<m.operate<<endl;
+								cout<<"operate "<<m.operate;
+								if(m.operate==1)
+								{
+									cout<<" try lock"<<endl;
+								}
+								else if(m.operate==2)
+								{
+									cout<<" try unlock"<<endl;
+								}
+								else if(m.operate==3)
+								{
+									cout<<" own"<<endl;
+								}
 								cout<<"client_id "<<m.client_id<<endl;
 								cout<<"key"<<m.lock_key<<endl;
 
