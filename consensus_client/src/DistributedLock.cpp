@@ -81,20 +81,21 @@ bool DistributedLock::DisconnectFromServer()
 	return true;
 }
 
-bool DistributedLock::TryLock(const string &lockkey)
+char* DistributedLock::GetMessage(int &len,int operate,const std::string &lock_key)
 {
-	if(is_connected_==false)
-	{
-		return false;
-	}
+	static char buf[256];
 	Message m;
 	m.operate=1;
 	m.client_id=client_id_;
-	m.lock_key=lockkey;
-	static char buf[256];
-	int len=Serialize(m,buf);
+	m.lock_key=lock_key;
+	len=Serialize(m,buf);
 	assert(len<=(int)sizeof(buf));
+	return buf;
 
+}
+
+bool DistributedLock::SendMessage(const char* buf, int len)
+{
 	int error;
 	int sended=0;
 	while(sended<len)
@@ -107,9 +108,15 @@ bool DistributedLock::TryLock(const string &lockkey)
 		}
 		sended+=error;
 	}
+	return true;
+}
 
+bool DistributedLock::RecvMessage(int &reply)
+{
 	int recved=0;
-	len=sizeof(int);
+	int len=sizeof(int);
+	int error;
+	static char buf[256];
 	while(recved<len)
 	{
 		error=recv(fd_,buf+recved,len-recved,0);
@@ -130,6 +137,7 @@ bool DistributedLock::TryLock(const string &lockkey)
 
 	int return_code;
 	memcpy(&return_code,buf,sizeof(int));
+	reply=return_code;
 
 	if(return_code==0)
 	{
@@ -138,12 +146,68 @@ bool DistributedLock::TryLock(const string &lockkey)
 	return false;
 }
 
-bool DistributedLock::TryUnlock(const string &lockKey)
+bool DistributedLock::TryLock(const string &lock_key)
 {
-	return false;
+	if(is_connected_==false)
+	{
+		return false;
+	}
+
+	int len;
+	char *buf;
+	buf=GetMessage(len,(int)(TRY_LOCK),lock_key);
+
+	int error;
+	error=SendMessage(buf,len);
+	if(error==false)
+	{
+		return false;
+	}
+
+	int reply;
+	return RecvMessage(reply);
 }
-bool DistributedLock::OwnTheLock(const string &lockKey)
+
+bool DistributedLock::TryUnlock(const string &lock_key)
 {
-	return false;
+	if(is_connected_==false)
+	{
+		return false;
+	}
+
+	int len;
+	char *buf;
+	buf=GetMessage(len,(int)(TRY_UNLOCK),lock_key);
+
+	int error;
+	error=SendMessage(buf,len);
+	if(error==false)
+	{
+		return false;
+	}
+
+	int reply;
+	return RecvMessage(reply);
+}
+bool DistributedLock::OwnTheLock(const string &lock_key)
+{
+	if(is_connected_==false)
+	{
+		return false;
+	}
+
+	int len;
+	char *buf;
+	buf=GetMessage(len,(int)(IS_OWN),lock_key);
+
+	int error;
+	error=SendMessage(buf,len);
+	if(error==false)
+	{
+		return false;
+	}
+
+	int reply;
+	return RecvMessage(reply);
 }
 

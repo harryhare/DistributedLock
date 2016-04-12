@@ -24,6 +24,9 @@ public:
 	bool OwnTheLock(const std::string &lockKey);
 	static std::string GetClientId(const char*name); // 根据UUID 生成ClientId
 private:
+	char* GetMessage(int &len,int operate,const std::string &lock_key);
+	bool SendMessage(const char* buf, int len);
+	bool RecvMessage(int &reply);
 	std::string client_id_;
 	bool is_connected_;
 	int fd_; // the descriptor used to talk to the consensus system

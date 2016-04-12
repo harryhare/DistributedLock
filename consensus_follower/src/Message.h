@@ -19,6 +19,14 @@ struct Message
 
 };
 
+enum OPERATE
+{
+	NONE,
+	TRY_LOCK,
+	TRY_UNLOCK,
+	IS_OWN,
+};
+
 bool IsEqual(const Message &m1,const Message &m2);
 int Serialize(Message & m,char*buf);
 bool Deserialize(char*buf, Message &m);
