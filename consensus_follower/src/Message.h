@@ -20,7 +20,7 @@ struct Message
 };
 
 bool IsEqual(const Message &m1,const Message &m2);
-int Serialize(const Message & m,char*buf);
+int Serialize(Message & m,char*buf);
 bool Deserialize(char*buf, Message &m);
 void TestMessage();
 

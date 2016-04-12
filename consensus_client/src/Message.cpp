@@ -15,11 +15,11 @@ bool IsEqual(const Message &m1,const Message &m2)
 	return (b1)&&(b2)&&(b3)&&(b4);
 }
 
-int Serialize(const Message & m,char*buf)
+int Serialize(Message & m,char*buf)
 {
 	int length=0;
 
-	memcpy(buf+length, &(m.total_length), sizeof(int));
+	//memcpy(buf+length, &(m.total_length), sizeof(int));
 	length+=sizeof(int);
 
 	memcpy(buf+length, &(m.operate), sizeof(int));
@@ -37,6 +37,8 @@ int Serialize(const Message & m,char*buf)
 	memcpy(buf+length, m.lock_key.c_str(),t);
 	length+=t;
 
+	memcpy(buf, &length, sizeof(int));
+	m.total_length=length;
 	return length;
 }
 

@@ -19,7 +19,7 @@ int Serialize(const Message & m,char*buf)
 {
 	int length=0;
 
-	memcpy(buf+length, &(m.total_length), sizeof(int));
+	//memcpy(buf+length, &(m.total_length), sizeof(int));
 	length+=sizeof(int);
 
 	memcpy(buf+length, &(m.operate), sizeof(int));
@@ -37,6 +37,8 @@ int Serialize(const Message & m,char*buf)
 	memcpy(buf+length, m.lock_key.c_str(),t);
 	length+=t;
 
+	memcpy(buf, &length, sizeof(int));
+	m.total_length=length;
 	return length;
 }
 

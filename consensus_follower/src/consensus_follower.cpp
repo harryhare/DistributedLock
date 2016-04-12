@@ -111,7 +111,11 @@ void ProcessClient()
 				if(i==listen_sockfd)
 				{//accept
 					struct sockaddr_in client_addr;
+#ifdef __CYGWIN__
+					int len=sizeof(client_addr);
+#else
 					unsigned int len=sizeof(client_addr);
+#endif
 					int client_fd=accept(listen_sockfd,(struct sockaddr*)&client_addr,&len);
 					if(client_fd<0)
 					{
@@ -143,35 +147,32 @@ void ProcessClient()
 					}
 					else
 					{
-						buffer[i][len]=0;
-						cout<<buffer[i]<<endl;
-						send(i,"ok\n",3,0);
-//						buff_len[i]+=len;
-//						if(buff_len[i]>=(int)sizeof(int))
-//						{
-//							int package_len;
-//							memcpy(&package_len,buffer[i],sizeof(int));
-//							if(buff_len[i]>=package_len)
-//							{
-//								Message m;
-//								Deserialize(buffer[i],m);
-//								int left=buff_len[i]-package_len;
-//								for(int ii=0;ii<left;ii++)
-//								{
-//									buff_len[ii]=buff_len[ii+package_len];
-//								}
-//								buff_len[i]=left;
-//
-//								//log
-//								cout<<"recv "<<m.total_length<<endl;
-//								cout<<"operate"<<m.operate<<endl;
-//								cout<<"client_id "<<m.client_id<<endl;
-//								cout<<"key"<<m.lock_key<<endl;
-//
-//								int ret=0;//ok
-//								send(i,&ret,sizeof(int),0);
-//							}
-//						}
+						buff_len[i]+=len;
+						while(buff_len[i]>=(int)sizeof(int))
+						{
+							int package_len;
+							memcpy(&package_len,buffer[i],sizeof(int));
+							if(buff_len[i]>=package_len)
+							{
+								Message m;
+								Deserialize(buffer[i],m);
+								int left=buff_len[i]-package_len;
+								for(int ii=0;ii<left;ii++)
+								{
+									buff_len[ii]=buff_len[ii+package_len];
+								}
+								buff_len[i]=left;
+
+								//log
+								cout<<"recv "<<m.total_length<<endl;
+								cout<<"operate"<<m.operate<<endl;
+								cout<<"client_id "<<m.client_id<<endl;
+								cout<<"key"<<m.lock_key<<endl;
+
+								int ret=0;//ok
+								send(i,&ret,sizeof(int),0);
+							}
+						}
 					}
 				}
 			}
