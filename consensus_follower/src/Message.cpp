@@ -15,7 +15,7 @@ bool IsEqual(const Message &m1,const Message &m2)
 	return (b1)&&(b2)&&(b3)&&(b4);
 }
 
-int Serialize(const Message & m,char*buf)
+int Serialize(Message & m,char*buf)
 {
 	int length=0;
 
