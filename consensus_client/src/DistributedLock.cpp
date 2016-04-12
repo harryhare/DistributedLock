@@ -85,7 +85,7 @@ char* DistributedLock::GetMessage(int &len,int operate,const std::string &lock_k
 {
 	static char buf[256];
 	Message m;
-	m.operate=1;
+	m.operate=operate;
 	m.client_id=client_id_;
 	m.lock_key=lock_key;
 	len=Serialize(m,buf);

@@ -168,7 +168,7 @@ void ProcessClient()
 
 								//log
 								cout<<"recv "<<m.total_length<<endl;
-								cout<<"operate "<<m.operate;
+								cout<<"    operate "<<m.operate;
 								if(m.operate==1)
 								{
 									cout<<" try lock"<<endl;
@@ -181,8 +181,8 @@ void ProcessClient()
 								{
 									cout<<" own"<<endl;
 								}
-								cout<<"client_id "<<m.client_id<<endl;
-								cout<<"key"<<m.lock_key<<endl;
+								cout<<"    client_id:"<<m.client_id<<endl;
+								cout<<"    key:"<<m.lock_key<<endl;
 
 								int ret=0;//ok
 								send(i,&ret,sizeof(int),0);
