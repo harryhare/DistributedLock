@@ -30,10 +30,8 @@ void test()
 {
 	char name[]="username1";
 	char lock[]="lock1";
-	DistributedLock lock1(SERVER_IP,SERVER_PORT,name);
-	cout<<"name:"<<name<<endl;
-	cout<<"lock:"<<lock<<endl;
 	int ret;
+	DistributedLock lock1(SERVER_IP,SERVER_PORT,name);
 	ret=lock1.ConnectToServer();
 	ret=lock1.TryLock(string(lock));
 	ret=lock1.TryUnlock(string(lock));
@@ -44,7 +42,7 @@ void test()
 
 
 int main() {
-	cout << "!!!Hello World!!!" << endl; // prints !!!Hello World!!!
+	cout << "test" << endl;
 	test();
 	return 0;
 }
