@@ -30,7 +30,7 @@
 
 using namespace std;
 
-const int LEADER_PORT_CALL	= 8101;
+const int LEADER_PORT_CMD	= 8101;
 const int LEADER_PORT_SYN	= 8102;
 const int LEADER_PORT_INIT	= 8103;
 const char LEADER_IP[]	= "127.0.0.1";
@@ -45,7 +45,7 @@ pthread_mutex_t map_mutex=PTHREAD_MUTEX_INITIALIZER;
 
 void *ProcessCmdThread(void *arg)//thread 1
 {
-	cout<<"thread 1 begin"<<endl;
+	cout<<"thread 1 start"<<endl;
 	int listen_sockfd;
 	int error;
 	int maxfd=-1;
@@ -53,7 +53,7 @@ void *ProcessCmdThread(void *arg)//thread 1
 
 	memset(&hints,0,sizeof(struct addrinfo));
 	hints.sin_family=AF_INET;
-	hints.sin_port=htons(SERVER_PORT);
+	hints.sin_port=htons(LEADER_PORT_CMD);
 	hints.sin_addr.s_addr=INADDR_ANY;
 
 	listen_sockfd=socket(AF_INET,SOCK_STREAM,0);
@@ -286,7 +286,7 @@ int main()
 		return 0;
 	}
 
-	cout << "join..." << endl; // prints !!!Hello World!!!
+
 	ret=pthread_join(id3,NULL);
 	if(ret!=0)
 	{

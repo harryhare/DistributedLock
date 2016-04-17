@@ -108,7 +108,6 @@ int main() {
 		return 0;
 	}
 
-	cout << "join..." << endl; // prints !!!Hello World!!!
 	ret=pthread_join(id4,NULL);
 	if(ret!=0)
 	{
