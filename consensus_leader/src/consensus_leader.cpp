@@ -218,7 +218,8 @@ void *ProcessCmdThread(void *arg)//thread 1
 								}
 								pthread_mutex_unlock(&map_mutex);
 								static char send_buf[sizeof(int)*3];
-								memcpy(send_buf, &len, sizeof(int));
+								static int l=sizeof(int)*3;
+								memcpy(send_buf, &l, sizeof(int));
 								memcpy(send_buf+sizeof(int), &ret, sizeof(int));
 								memcpy(send_buf+sizeof(int)*2, &(m.extend), sizeof(int));
 								bool r=SendWhole(i,send_buf,sizeof(int)*3);

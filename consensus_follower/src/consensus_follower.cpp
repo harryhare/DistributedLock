@@ -22,7 +22,7 @@ using namespace std;
 const int LEADER_PORT_CMD	= 8101;
 const int LEADER_PORT_SYN	= 8102;
 const int LEADER_PORT_INIT	= 8103;
-const char LEADER_IP[]	= "127.0.0.1";
+const char LEADER_IP[]	= "47.88.34.145";
 const int SERVER_PORT 	= 9101;
 const char SERVER_IP[] 	= "127.0.0.1";
 const int MAX_PENDING_CLIENT =5;//listen
