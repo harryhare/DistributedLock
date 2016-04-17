@@ -14,6 +14,7 @@
 #include <cstring>
 #include <cstdlib>
 #include "global.h"
+#include "IO.h"
 
 
 using namespace std;
