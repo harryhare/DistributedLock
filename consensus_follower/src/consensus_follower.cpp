@@ -43,12 +43,12 @@ void* LeaderCmdThread(void*);
 
 void* LeaderInitThread(void*)
 {
-	cout<<"thread 2"<<endl;
+	cout<<"thread 2 start"<<endl;
 	pthread_exit(NULL);
 }
 void* LeaderSynThread(void*)
 {
-	cout<<"thread 1"<<endl;
+	cout<<"thread 1 start"<<endl;
 	pthread_exit(NULL);
 }
 
@@ -113,20 +113,36 @@ int main() {
 	{
 		perror("thread_join() 4");
 	}
+	else
+	{
+		cout<<"thread 4 stop"<<endl;
+	}
 	ret=pthread_join(id3,NULL);
 	if(ret!=0)
 	{
 		perror("thread_join() 3");
+	}
+	else
+	{
+		cout<<"thread 3 stop"<<endl;
 	}
 	ret=pthread_join(id2,NULL);
 	if(ret!=0)
 	{
 		perror("thread_join() 2");
 	}
+	else
+	{
+		cout<<"thread 2 stop"<<endl;
+	}
 	ret=pthread_join(id1,NULL);
 	if(ret!=0)
 	{
 		perror("thread_join() 1");
+	}
+	else
+	{
+		cout<<"thread 1 stop"<<endl;
 	}
 
 	return 0;

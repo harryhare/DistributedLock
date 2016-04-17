@@ -156,7 +156,8 @@ void *ProcessCmdThread(void *arg)//thread 1
 								buff_len[i]=left;
 
 								//log
-								cout<<"    recv: "<<package_len<<"bytes";
+								cout<<"recv:"<<package_len<<"bytes;";
+								cout<<" from:"<<i<<";";
 								cout<<" -operate:"<<m.operate;
 								if(m.operate==1)
 								{
@@ -241,13 +242,13 @@ void *ProcessCmdThread(void *arg)//thread 1
 
 void *SynInitDateThread(void *arg)//thread2
 {
-	cout<<"thread 2"<<endl;
+	cout<<"thread 2 start"<<endl;
 	pthread_exit(NULL);
 }
 
 void *SynTemporaryDataThread(void *arg)//thread3
 {
-	cout<<"thread 3"<<endl;
+	cout<<"thread 3 start"<<endl;
 	pthread_exit(NULL);
 
 }
@@ -292,15 +293,27 @@ int main()
 	{
 		perror("thread_join() 3");
 	}
+	else
+	{
+		cout<<"thread 3 stop"<<endl;
+	}
 	ret=pthread_join(id2,NULL);
 	if(ret!=0)
 	{
 		perror("thread_join() 2");
 	}
+	else
+	{
+		cout<<"thread 2 stop"<<endl;
+	}
 	ret=pthread_join(id1,NULL);
 	if(ret!=0)
 	{
 		perror("thread_join() 1");
+	}
+	else
+	{
+		cout<<"thread 1 stop"<<endl;
 	}
 
 	return 0;

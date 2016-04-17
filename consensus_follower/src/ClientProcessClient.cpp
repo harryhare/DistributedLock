@@ -151,22 +151,23 @@ void* ClientProcessClient(void*)
 								buff_len[i]=left;
 
 								//log
-								cout<<"    recv "<<m.total_length<<"bytes;";
-								cout<<"    -operate:"<<m.operate;
+								cout<<"recv:"<<m.total_length<<"bytes;";
+								cout<<" from:"<<i<<";";
+								cout<<" -operate:"<<m.operate;
 								if(m.operate==1)
 								{
-									cout<<"-try lock; "<<endl;
+									cout<<" try lock;";
 								}
 								else if(m.operate==2)
 								{
-									cout<<"-try unlock; "<<endl;
+									cout<<" try unlock;";
 								}
 								else if(m.operate==3)
 								{
-									cout<<"-own; "<<endl;
+									cout<<" own;"<<endl;
 								}
-								cout<<"    -client_id:"<<m.client_id<<";";
-								cout<<"    -key:"<<m.lock_key<<endl;
+								cout<<" -client_id:"<<m.client_id<<";";
+								cout<<" -key:"<<m.lock_key<<endl;
 
 
 								MessageE me;

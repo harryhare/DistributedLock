@@ -30,6 +30,9 @@ void* LeaderCmdThread(void*)
 		memcpy(&ret, buf+sizeof(int),sizeof(int));
 		memcpy(&client_fd, buf+sizeof(int),sizeof(int));
 
+		cout<<"recv: 12bytes; from leader;";
+		cout<<" ret:"<<ret<<";";
+		cout<<" client_fd:"<<client_fd<<";";
 		SendWhole(client_fd,buf+sizeof(int),sizeof(int));
 	}
 
