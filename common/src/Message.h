@@ -19,6 +19,15 @@ struct Message
 
 };
 
+struct MessageE
+{
+	int operate;
+	int extend;
+	string client_id;
+	string lock_key;
+
+};
+
 enum OPERATE
 {
 	NONE,
@@ -27,10 +36,18 @@ enum OPERATE
 	IS_OWN,
 };
 
+
 bool IsEqual(const Message &m1,const Message &m2);
-int Serialize(Message & m,char*buf);
-bool Deserialize(char*buf, Message &m);
+bool IsEqual(const MessageE &m1,const MessageE &m2);
+int Serialize(char*buf,Message & m);
+bool Deserialize(Message &m,char*buf);
+int SerializeE(char * buf, const MessageE & m);
+bool DeserializeE(MessageE &m, char * buf);
+
+
 void TestMessage();
+void TestMessageE();
+
 
 
 #endif /* MESSAGE_H_ */
