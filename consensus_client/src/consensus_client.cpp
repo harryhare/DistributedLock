@@ -24,8 +24,8 @@ const int LEADER_PORT_INIT	= 8103;
 const char LEADER_IP[]	= "127.0.0.1";
 const int SERVER_PORT 	= 9101;
 
-//const char SERVER_IP[] 	= "47.88.34.145";
-const char SERVER_IP[] 	= "127.0.0.1";
+const char SERVER_IP[] 	= "47.88.34.145";
+//const char SERVER_IP[] 	= "127.0.0.1";
 
 
 void test()

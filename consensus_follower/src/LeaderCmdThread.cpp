@@ -28,11 +28,11 @@ void* LeaderCmdThread(void*)
 			cout<<"error len!=12"<<endl;
 		}
 		memcpy(&ret, buf+sizeof(int),sizeof(int));
-		memcpy(&client_fd, buf+sizeof(int),sizeof(int));
+		memcpy(&client_fd, buf+sizeof(int)*2,sizeof(int));
 
 		cout<<"recv: 12bytes; from leader;";
 		cout<<" ret:"<<ret<<";";
-		cout<<" client_fd:"<<client_fd<<";";
+		cout<<" client_fd:"<<client_fd<<endl;
 		SendWhole(client_fd,buf+sizeof(int),sizeof(int));
 	}
 
