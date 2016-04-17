@@ -5,7 +5,9 @@
  *      Author: mayue
  */
 #include "IO.h"
+#include "global.h"
 #include <iostream>
+#include <cstring>
 
 
 using namespace std;
@@ -14,14 +16,14 @@ using namespace std;
 void* LeaderCmdThread(void*)
 {
 	cout<<"thread 3 start"<<endl;
-	static char buf[12];
+	static char buf[sizeof(int)*3];
 	size_t len;
 	int client_fd;
 	int ret;
 	while(1)
 	{
 		RecvWhole(fd_leader,buf,len);
-		if(len!=(unsigned)12)
+		if(len!=(unsigned)(sizeof(int)*3))
 		{
 			cout<<"error len!=12"<<endl;
 		}

@@ -11,7 +11,7 @@
 
 #include <unistd.h>
 
-bool RecvWhole(int fd, const char*buf, size_t&len);
+bool RecvWhole(int fd, char*buf, size_t&len);
 bool SendWhole(int fd, const char*buf, size_t len);
 
 #endif

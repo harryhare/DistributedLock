@@ -34,6 +34,8 @@ int fd_leader_syn;
 int fd_leader_init;
 pthread_mutex_t fd_leader_mutex;
 
+int ConnectTo(const char* ip,int port);
+
 void* ClientProcessClient(void*);
 
 void* LeaderCmdThread(void*);
