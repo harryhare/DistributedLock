@@ -16,6 +16,7 @@
 
 #include "Message.h"
 #include "global.h"
+#include "IO.cpp"
 
 using namespace std;
 
