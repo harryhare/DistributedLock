@@ -158,22 +158,22 @@ void *ProcessCmdThread(void *arg)//thread 1
 								//log
 								cout<<"recv:"<<package_len<<"bytes;";
 								cout<<" from:"<<i<<";";
+								cout<<" -extend:"<<m.extend;
+								cout<<" -client_id:"<<m.client_id<<";";
+								cout<<" -key:"<<m.lock_key<<";";
 								cout<<" -operate:"<<m.operate;
 								if(m.operate==1)
 								{
-									cout<<" try lock;";
+									cout<<" try lock;"<<endl;;
 								}
 								else if(m.operate==2)
 								{
-									cout<<" try unlock;";
+									cout<<" try unlock;"<<endl;
 								}
 								else if(m.operate==3)
 								{
-									cout<<" own;";
+									cout<<" own;"<<endl;
 								}
-								cout<<" -extend:"<<m.extend;
-								cout<<" -client_id:"<<m.client_id<<";";
-								cout<<" -key:"<<m.lock_key<<endl;
 
 								//process
 								int ret=0;//ok
@@ -207,13 +207,13 @@ void *ProcessCmdThread(void *arg)//thread 1
 								}
 								else if(m.operate==3)
 								{
-									if(it->second!=m.client_id)
+									if(it!=key_map.end() && it->second==m.client_id)
 									{
-										ret=1;
+										ret=0;
 									}
 									else
 									{
-										ret=0;
+										ret=1;
 									}
 								}
 								pthread_mutex_unlock(&map_mutex);

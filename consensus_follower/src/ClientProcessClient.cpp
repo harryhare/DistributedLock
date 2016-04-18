@@ -153,21 +153,21 @@ void* ClientProcessClient(void*)
 								//log
 								cout<<"recv:"<<m.total_length<<"bytes;";
 								cout<<" from:"<<i<<";";
+								cout<<" -client_id:"<<m.client_id<<";";
+								cout<<" -key:"<<m.lock_key<<";";
 								cout<<" -operate:"<<m.operate;
 								if(m.operate==1)
 								{
-									cout<<" try lock;";
+									cout<<" try lock;"<<endl;
 								}
 								else if(m.operate==2)
 								{
-									cout<<" try unlock;";
+									cout<<" try unlock;"<<endl;
 								}
 								else if(m.operate==3)
 								{
 									cout<<" own;"<<endl;
 								}
-								cout<<" -client_id:"<<m.client_id<<";";
-								cout<<" -key:"<<m.lock_key<<endl;
 
 
 								MessageE me;
@@ -177,7 +177,7 @@ void* ClientProcessClient(void*)
 								me.lock_key=m.lock_key;
 								static char buf_send[256];
 								int len=SerializeE(buf_send,me);
-								send(fd_leader,buf_send,len,0);
+								SendWhole(fd_leader,buf_send,len);
 								//int ret=0;//ok
 								//send(i,&ret,sizeof(int),0);
 							}

@@ -22,7 +22,11 @@ void* LeaderCmdThread(void*)
 	int ret;
 	while(1)
 	{
-		RecvWhole(fd_leader,buf,len);
+		bool b=RecvWhole(fd_leader,buf,len);
+		if(b==false)
+		{
+			break;
+		}
 		if(len!=(unsigned)(sizeof(int)*3))
 		{
 			cout<<"error len!=12"<<endl;
