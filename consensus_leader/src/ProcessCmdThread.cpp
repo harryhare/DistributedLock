@@ -198,13 +198,15 @@ void *ProcessCmdThread(void *arg)//thread 1
 
 							pthread_mutex_unlock(&map_mutex);
 
+							cout<<"ret:"<<ret<<endl;
+
 							set<int>::iterator set_it;
-							if((ret=0) && (m.operate==1 ||m.operate==2))
+							if((ret==0) && (m.operate==1 ||m.operate==2))
 							{
 								pthread_mutex_lock(&fds_mutex);
 								for(set_it=follower_fds.begin();set_it!=follower_fds.end();set_it++)
 								{
-									int r=SendWhole(i,buffer[i],package_len);
+									int r=SendWhole(*set_it,buffer[i],package_len);
 									if(r==false)
 									{
 										cout<<"sendwhole error ProcessCmdThread"<<endl;

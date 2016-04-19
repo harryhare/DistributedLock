@@ -35,7 +35,7 @@ void* LeaderSynThread(void*)
 		if(l==0)
 		{
 			assert(recved==0);
-			cout<<"sys init data done"<<endl;
+			cout<<"Syn connection close"<<endl;
 			break;
 		}
 

@@ -59,16 +59,16 @@ int main() {
 	{
 		return 0;
 	}
-//	fd_leader_syn=ConnectTo(LEADER_IP,LEADER_PORT_SYN);
-//	if(fd_leader_syn<0)
-//	{
-//		return 0;
-//	}
-//	fd_leader_init=ConnectTo(LEADER_IP,LEADER_PORT_INIT);
-//	if(fd_leader_init<0)
-//	{
-//		return 0;
-//	}
+	fd_leader_syn=ConnectTo(LEADER_IP,LEADER_PORT_SYN);
+	if(fd_leader_syn<0)
+	{
+		return 0;
+	}
+	fd_leader_init=ConnectTo(LEADER_IP,LEADER_PORT_INIT);
+	if(fd_leader_init<0)
+	{
+		return 0;
+	}
 
 	pthread_t id1;//leader_syn
 	pthread_t id2;//leader_init

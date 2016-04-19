@@ -105,7 +105,7 @@ void *SynTemporaryDataThread(void *arg)//thread3
 					FD_SET(client_fd,&master);
 
 					pthread_mutex_lock(&fds_mutex);
-					follower_fds.insert(i);
+					follower_fds.insert(client_fd);
 					pthread_mutex_unlock(&fds_mutex);
 
 					if(maxfd<client_fd)
