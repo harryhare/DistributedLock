@@ -1,9 +1,8 @@
 #ifndef GLOBAL_H_
 #define GLOBAL_H_
 
-#include "Message.h"
 #include <map>
-#include <queue>
+#include <set>
 #include <string>
 #include <pthread.h>
 
@@ -16,13 +15,12 @@ extern const char SERVER_IP[];
 extern const int MAX_PENDING_CLIENT;//listen
 
 extern std::map<std::string,std::string> key_map;
-extern std::queue<Message> syn_queue;
+extern std::set<int> follower_fds;
 extern pthread_mutex_t map_mutex;
-extern pthread_mutex_t fd_leader_mutex;
-extern pthread_mutex_t queue_mutex;
-extern pthread_cond_t queue_cond;
+extern pthread_mutex_t fds_mutex;
 extern int fd_leader;//multi thread
 extern int fd_leader_syn;
 extern int fd_leader_init;
+extern pthread_mutex_t fd_leader_mutex;
 
 #endif

@@ -29,11 +29,14 @@ const int MAX_PENDING_CLIENT =5;//listen
 
 
 map<string,string> key_map;
+queue<Message> syn_queue;
 pthread_mutex_t map_mutex=PTHREAD_MUTEX_INITIALIZER;
+pthread_mutex_t queue_mutex=PTHREAD_MUTEX_INITIALIZER;
+pthread_mutex_t fd_leader_mutex=PTHREAD_MUTEX_INITIALIZER;
+pthread_cond_t  queue_cond=PTHREAD_COND_INITIALIZER;
 int fd_leader;
 int fd_leader_syn;
 int fd_leader_init;
-pthread_mutex_t fd_leader_mutex;
 
 int ConnectTo(const char* ip,int port);
 
@@ -41,16 +44,9 @@ void* ClientProcessClient(void*);
 
 void* LeaderCmdThread(void*);
 
-void* LeaderInitThread(void*)
-{
-	cout<<"thread 2 start"<<endl;
-	pthread_exit(NULL);
-}
-void* LeaderSynThread(void*)
-{
-	cout<<"thread 1 start"<<endl;
-	pthread_exit(NULL);
-}
+void* LeaderInitThread(void*);
+
+void* LeaderSynThread(void*);
 
 
 
@@ -82,6 +78,8 @@ int main() {
 	int ret;
 	pthread_mutex_init(&map_mutex,NULL);
 	pthread_mutex_init(&fd_leader_mutex,NULL);
+	pthread_mutex_init(&queue_mutex,NULL);
+	pthread_cond_init(&queue_cond,NULL);
 
 	ret=pthread_create(&id1,NULL,LeaderSynThread,NULL);
 	if(ret!=0)

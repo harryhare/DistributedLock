@@ -1,28 +1,34 @@
+/*
+ * ProcessCmdThread.cpp
+ *
+ *  Created on: 2016Äê4ÔÂ18ÈÕ
+ *      Author: mayue
+ */
+
+#include "global.h"
+#include "Message.h"
+#include "IO.h"
+
+#include <iostream>
 #include <cstdio>
 #include <cstring>
-#include <iostream>
-#include <map>
-#include <queue>
+#include <fcntl.h>
+#include <unistd.h>
+
 #include <sys/types.h>
 #include <sys/socket.h>
 #include <sys/select.h>
-#include <unistd.h>
-#include <fcntl.h>
-#include <pthread.h>
 
 #include <netinet/in.h>
 #include <netdb.h>
 #include <arpa/inet.h>
 
-#include "Message.h"
-#include "global.h"
-#include "IO.cpp"
-
 using namespace std;
 
-void* ClientProcessClient(void*)
+
+void *ProcessCmdThread(void *arg)//thread 1
 {
-	cout<<"Thread 4 start"<<endl;
+	cout<<"thread 1 start"<<endl;
 	int listen_sockfd;
 	int error;
 	int maxfd=-1;
@@ -30,7 +36,7 @@ void* ClientProcessClient(void*)
 
 	memset(&hints,0,sizeof(struct addrinfo));
 	hints.sin_family=AF_INET;
-	hints.sin_port=htons(SERVER_PORT);
+	hints.sin_port=htons(LEADER_PORT_CMD);
 	hints.sin_addr.s_addr=INADDR_ANY;
 
 	listen_sockfd=socket(AF_INET,SOCK_STREAM,0);
@@ -53,25 +59,6 @@ void* ClientProcessClient(void*)
 	{
 		perror("fcntl error");
 	}
-
-
-
-//	while(1)
-//	{
-//		struct sockaddr_in client_addr;
-//		int len=sizeof(client_addr);
-//		int client1=accept(listen_sockfd,(struct sockaddr*)&client_addr,&len);
-//		if(client1<0)
-//		{
-//			perror("accept");
-//		}
-//		cout<<"incoming fd"<<client1<<" from "<<inet_ntoa(client_addr.sin_addr)<<":"<<ntohs(client_addr.sin_port)<<endl;
-//		//write(client1,"hello\n",6);
-//		send(client1,"hello\n",6,0);
-//		close(client1);
-//	}
-
-
 
 	static char buffer[128][256];
 	static int buff_len[128];
@@ -144,25 +131,19 @@ void* ClientProcessClient(void*)
 							{
 								break;
 							}
-
-							Message m;
-							Deserialize(m,buffer[i]);
-							int left=buff_len[i]-package_len;
-							for(int ii=0;ii<left;ii++)
-							{
-								buffer[i][ii]=buffer[i][ii+package_len];
-							}
-							buff_len[i]=left;
+							MessageE m;
+							DeserializeE(m,buffer[i]);
 
 							//log
-							cout<<"recv:"<<m.total_length<<"bytes;";
+							cout<<"recv:"<<package_len<<"bytes;";
 							cout<<" from:"<<i<<";";
+							cout<<" -extend:"<<m.extend;
 							cout<<" -client_id:"<<m.client_id<<";";
 							cout<<" -key:"<<m.lock_key<<";";
 							cout<<" -operate:"<<m.operate;
 							if(m.operate==1)
 							{
-								cout<<" try lock;"<<endl;
+								cout<<" try lock;"<<endl;;
 							}
 							else if(m.operate==2)
 							{
@@ -173,17 +154,84 @@ void* ClientProcessClient(void*)
 								cout<<" own;"<<endl;
 							}
 
+							//process
+							int ret=0;//ok
+							map<string,string>::iterator it;
+							pthread_mutex_lock(&map_mutex);
+							it=key_map.find(m.lock_key);
+							if(m.operate==1)
+							{
+								if(it!=key_map.end())
+								{
+									ret=1;
+								}
+								else
+								{
+									//key_map.insert(pair<string,string>(m.lock_key,m.client_id));
+									key_map[m.lock_key]=m.client_id;
+									ret=0;
+								}
+							}
+							else if(m.operate==2)
+							{
+								if(it->second!=m.client_id)
+								{
+									ret=1;
+								}
+								else
+								{
+									key_map.erase(m.lock_key);
+									ret=0;
+								}
+							}
+							else if(m.operate==3)
+							{
+								if(it!=key_map.end() && it->second==m.client_id)
+								{
+									ret=0;
+								}
+								else
+								{
+									ret=1;
+								}
+							}
 
-							MessageE me;
-							me.extend=i;
-							me.operate=m.operate;
-							me.client_id=m.client_id;
-							me.lock_key=m.lock_key;
-							static char buf_send[256];
-							int len=SerializeE(buf_send,me);
-							SendWhole(fd_leader,buf_send,len);
-							//int ret=0;//ok
-							//send(i,&ret,sizeof(int),0);
+							pthread_mutex_unlock(&map_mutex);
+
+							set<int>::iterator set_it;
+							if((ret=0) && (m.operate==1 ||m.operate==2))
+							{
+								pthread_mutex_lock(&fds_mutex);
+								for(set_it=follower_fds.begin();set_it!=follower_fds.end();set_it++)
+								{
+									int r=SendWhole(i,buffer[i],package_len);
+									if(r==false)
+									{
+										cout<<"sendwhole error ProcessCmdThread"<<endl;
+									}
+								}
+								pthread_mutex_unlock(&fds_mutex);
+							}
+							//update buffer and buf_len
+							int left=buff_len[i]-package_len;
+							for(int ii=0;ii<left;ii++)
+							{
+								buffer[i][ii]=buffer[i][ii+package_len];
+							}
+							buff_len[i]=left;
+
+
+							static char send_buf[sizeof(int)*3];
+							static int l=sizeof(int)*3;
+							memcpy(send_buf, &l, sizeof(int));
+							memcpy(send_buf+sizeof(int), &ret, sizeof(int));
+							memcpy(send_buf+sizeof(int)*2, &(m.extend), sizeof(int));
+							bool r=SendWhole(i,send_buf,sizeof(int)*3);
+							if(r==false)
+							{
+								cout<<"send error consensus_leader"<<endl;
+							}
+
 						}
 					}
 				}
@@ -194,4 +242,7 @@ void* ClientProcessClient(void*)
 
 	close(listen_sockfd);
 
+	pthread_exit(NULL);
 }
+
+
