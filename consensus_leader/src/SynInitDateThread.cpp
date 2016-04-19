@@ -31,7 +31,7 @@ int WriteToBuffer(char*buf,const string& str)
 	int len=str.length();
 	int total=sizeof(int)+len;
 	memcpy(buf,&len,sizeof(int));
-	memcpy(buf,str.c_str(),len);
+	memcpy(buf+sizeof(int),str.c_str(),len);
 	return total;
 }
 
@@ -99,6 +99,7 @@ void *SynInitDateThread(void *arg)//thread2
 			step = WriteToBuffer(send_buf+count,key);
 			count += step;
 			step = WriteToBuffer(send_buf+count,value);
+			count += step;
 			if(count>1024)
 			{
 				int ret=SendWhole(client_fd,send_buf,count);

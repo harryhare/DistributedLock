@@ -50,8 +50,13 @@ void* LeaderSynThread(void*)
 			}
 
 			MessageE m;
-			int temp=DeserializeE(m,buf);
-			assert(temp==len);
+			bool temp=DeserializeE(m,buf);
+			assert(temp==true);
+			//log
+			cout<<"syn:"<<len<<"bytes; ";
+			cout<<"operate:"<<m.operate<<"; ";
+			cout<<"key:"<<m.lock_key<<"; ";
+			cout<<"client:"<<m.client_id<<";i "<<endl;
 			pthread_mutex_lock(&queue_mutex);
 			syn_queue.push(m);
 			pthread_mutex_unlock(&queue_mutex);

@@ -72,6 +72,8 @@ void* LeaderInitThread(void*)
 			key_map[key_name]=client_id;
 			pthread_mutex_unlock(&map_mutex);
 
+			cout<<"map add: "<<key_name<<"->"<<client_id<<endl;
+
 			int left=recved-len;
 			for(int i=0;i<left;i++)
 			{

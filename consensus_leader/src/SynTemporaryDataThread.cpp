@@ -28,7 +28,7 @@ using namespace std;
 
 void *SynTemporaryDataThread(void *arg)//thread3
 {
-	cout<<"thread 3 start"<<endl;	cout<<"thread 2 start"<<endl;
+	cout<<"thread 3 start"<<endl;	
 	int listen_sockfd;
 	int error;
 	int maxfd=-1;
