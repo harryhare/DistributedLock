@@ -49,8 +49,8 @@ void* LeaderSynThread(void*)
 				break;
 			}
 
-			Message m;
-			int temp=Deserialize(m,buf);
+			MessageE m;
+			int temp=DeserializeE(m,buf);
 			assert(temp==len);
 			pthread_mutex_lock(&queue_mutex);
 			syn_queue.push(m);

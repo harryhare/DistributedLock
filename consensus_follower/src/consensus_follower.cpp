@@ -29,7 +29,7 @@ const int MAX_PENDING_CLIENT =5;//listen
 
 
 map<string,string> key_map;
-queue<Message> syn_queue;
+queue<MessageE> syn_queue;
 pthread_mutex_t map_mutex=PTHREAD_MUTEX_INITIALIZER;
 pthread_mutex_t queue_mutex=PTHREAD_MUTEX_INITIALIZER;
 pthread_mutex_t fd_leader_mutex=PTHREAD_MUTEX_INITIALIZER;

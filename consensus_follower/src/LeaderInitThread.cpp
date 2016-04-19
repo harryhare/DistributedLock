@@ -88,7 +88,7 @@ void* LeaderInitThread(void*)
 		{
 			pthread_cond_wait(&queue_cond,&queue_mutex);
 		}
-		Message m=syn_queue.front();
+		MessageE m=syn_queue.front();
 		syn_queue.pop();
 		pthread_mutex_unlock(&queue_mutex);
 

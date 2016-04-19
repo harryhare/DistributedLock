@@ -1,0 +1,6 @@
+#!/bin/bash
+git add common/src
+git add consensus_client/src
+git add consensus_follower/src
+git add consensus_leader/src
+echo "done"

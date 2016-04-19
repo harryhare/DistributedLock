@@ -134,6 +134,13 @@ void *ProcessCmdThread(void *arg)//thread 1
 							MessageE m;
 							DeserializeE(m,buffer[i]);
 
+							//update buffer and buf_len
+							int left=buff_len[i]-package_len;
+							for(int ii=0;ii<left;ii++)
+							{
+								buffer[i][ii]=buffer[i][ii+package_len];
+							}
+							buff_len[i]=left;
 							//log
 							cout<<"recv:"<<package_len<<"bytes;";
 							cout<<" from:"<<i<<";";
@@ -214,13 +221,6 @@ void *ProcessCmdThread(void *arg)//thread 1
 								}
 								pthread_mutex_unlock(&fds_mutex);
 							}
-							//update buffer and buf_len
-							int left=buff_len[i]-package_len;
-							for(int ii=0;ii<left;ii++)
-							{
-								buffer[i][ii]=buffer[i][ii+package_len];
-							}
-							buff_len[i]=left;
 
 
 							static char send_buf[sizeof(int)*3];

@@ -16,7 +16,7 @@ extern const char SERVER_IP[];
 extern const int MAX_PENDING_CLIENT;//listen
 
 extern std::map<std::string,std::string> key_map;
-extern std::queue<Message> syn_queue;
+extern std::queue<MessageE> syn_queue;
 extern pthread_mutex_t map_mutex;
 extern pthread_mutex_t fd_leader_mutex;
 extern pthread_mutex_t queue_mutex;
