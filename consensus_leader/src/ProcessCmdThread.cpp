@@ -174,14 +174,14 @@ void *ProcessCmdThread(void *arg)//thread 1
 							}
 							else if(m.operate==2)
 							{
-								if(it->second!=m.client_id)
-								{
-									ret=1;
-								}
-								else
+								if((it!=key_map.end()) && (it->second==m.client_id))
 								{
 									key_map.erase(m.lock_key);
 									ret=0;
+								}
+								else
+								{
+									ret=1;
 								}
 							}
 							else if(m.operate==3)
@@ -194,6 +194,10 @@ void *ProcessCmdThread(void *arg)//thread 1
 								{
 									ret=1;
 								}
+							}
+							else
+							{
+								cout<<"wrong operate :"<<m.operate<<endl;
 							}
 
 							pthread_mutex_unlock(&map_mutex);

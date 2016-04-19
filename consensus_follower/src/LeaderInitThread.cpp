@@ -38,7 +38,7 @@ void* LeaderInitThread(void*)
 		if(l==0)
 		{
 			assert(recved==0);
-			cout<<"sys init data done"<<endl;
+			cout<<"syn init data done"<<endl;
 			break;
 		}
 
