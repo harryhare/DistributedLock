@@ -36,7 +36,7 @@ void *SynTemporaryDataThread(void *arg)//thread3
 
 	memset(&hints,0,sizeof(struct addrinfo));
 	hints.sin_family=AF_INET;
-	hints.sin_port=htons(LEADER_PORT_CMD);
+	hints.sin_port=htons(LEADER_PORT_SYN);
 	hints.sin_addr.s_addr=INADDR_ANY;
 
 	listen_sockfd=socket(AF_INET,SOCK_STREAM,0);
