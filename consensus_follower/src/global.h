@@ -7,13 +7,13 @@
 #include <string>
 #include <pthread.h>
 
-extern const int LEADER_PORT_CMD;
-extern const int LEADER_PORT_SYN;
-extern const int LEADER_PORT_INIT;
-extern const char LEADER_IP[];
-extern const int SERVER_PORT;
-extern const char SERVER_IP[];
-extern const int MAX_PENDING_CLIENT;//listen
+extern int LEADER_PORT_CMD;
+extern int LEADER_PORT_SYN;
+extern int LEADER_PORT_INIT;
+extern char LEADER_IP[];
+extern int SERVER_PORT;
+extern char SERVER_IP[];
+extern int MAX_PENDING_CLIENT;//listen
 
 extern std::map<std::string,std::string> key_map;
 extern std::queue<MessageE> syn_queue;

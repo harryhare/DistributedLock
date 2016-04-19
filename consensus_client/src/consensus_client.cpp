@@ -153,7 +153,7 @@ int main(int argc,char**argv) {
 		}
 		else if(strcmp("ownlock",buf)==0)
 		{
-			cout<<"ownlock:"<<lock_name<<endl;
+			//cout<<"ownlock:"<<lock_name<<endl;
 			ret = lock1.OwnTheLock(lock_name);
 			cout<<ret<<endl;
 
