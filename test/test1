@@ -1,0 +1,23 @@
+#!/bin/bash
+client=../bin/client
+function single_client_test()
+{
+	$client  -s -u $3 -h $1 -p $2 <input1 >output
+	result=`diff output output1`
+	if [ "$result" = "" ]; then
+		echo -e "\033[32mtest pass\033[0m"
+	else
+		echo -e "\033[31mtest not pass\033[0m"
+		echo $result
+	fi
+}
+echo test follower 1:
+single_client_test 127.0.0.1 9101 mayue001
+echo test follower 2:
+single_client_test 127.0.0.1 9102 mayue001
+echo test follower 3:
+single_client_test 127.0.0.1 9103 mayue001
+echo test follower 4:
+single_client_test 127.0.0.1 9104 mayue001
+echo test follower 5:
+single_client_test 127.0.0.1 9105 mayue001

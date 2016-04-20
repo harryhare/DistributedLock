@@ -1,10 +1,12 @@
 common_dir=./common/src
+tinyxml_dir=./tinyxml/src
 leader_dir=./consensus_leader/src
 follower_dir=./consensus_follower/src
 client_dir=./consensus_client/src
 bin_dir=./bin
 
 common_include= $(common_dir)/*.h
+tinyxml_include=$(tinyxml_dir)/*.h
 leader_include= $(leader_dir)/*.h
 follower_include= $(follower_dir)/*.h
 client_include= $(client_dir)/*.h
@@ -13,15 +15,22 @@ client_include= $(client_dir)/*.h
 default:
 	#@mkdir -p bin
 	@[ -d bin ] || mkdir bin 
-	@echo $(common_dir)/test
+	@[ -f bin/follower_conf.xml ] || \
+		cp ./consensus_follower/follower_conf.xml $(bin_dir)/
+	@[ -f bin/leader_conf.xml ] || \
+		cp ./consensus_leader/leader_conf.xml $(bin_dir)/
 	make all
 .PHONY: all
-all : $(bin_dir)/libcommon.a \
+all :   $(bin_dir)/libcommon.a \
+		$(bin_dir)/libtinyxml.a \
 		$(bin_dir)/leader \
 		$(bin_dir)/follower  \
 		$(bin_dir)/client
 	@echo "done"
 
+########################################################################
+#                            common
+########################################################################
 $(bin_dir)/libcommon.a:$(bin_dir)/Message.o $(bin_dir)/IO.o
 	@echo common
 	ar -r $@ $^
@@ -32,7 +41,31 @@ $(bin_dir)/Message.o : $(common_dir)/Message.cpp $(common_dir)/Message.h
 $(bin_dir)/IO.o : $(common_dir)/IO.cpp $(common_dir)/IO.h
 	g++ -g -c $< -o $@
 
+########################################################################
+#                            tinyxml
+########################################################################
+$(bin_dir)/libtinyxml.a : $(bin_dir)/tinyxml.o \
+						  $(bin_dir)/tinystr.o \
+						  $(bin_dir)/tinyxmlerror.o \
+						  $(bin_dir)/tinyxmlparser.o
+	@echo tinyxml
+	ar -r $@ $^
 
+$(bin_dir)/tinyxml.o : $(tinyxml_dir)/tinyxml.cpp $(tinyxml_dir)/*.h
+	g++ -g -c $< -I $(tinyxml_dir) -o $@
+
+$(bin_dir)/tinystr.o : $(tinyxml_dir)/tinystr.cpp $(tinyxml_dir)/*.h
+	g++ -g -c $< -I $(tinyxml_dir) -o $@
+
+$(bin_dir)/tinyxmlerror.o : $(tinyxml_dir)/tinyxmlerror.cpp \
+							$(tinyxml_dir)/*.h
+	g++ -g -c $< -I $(tinyxml_dir) -o $@
+	
+$(bin_dir)/tinyxmlparser.o : $(tinyxml_dir)/tinyxmlparser.cpp \
+							 $(tinyxml_dir)/*.h
+	g++ -g -c $< -I $(tinyxml_dir) -o $@
+
+	
 ########################################################################
 #                            leader
 ########################################################################
@@ -41,12 +74,13 @@ $(bin_dir)/leader : $(bin_dir)/consensus_leader.o \
 					$(bin_dir)/SynInitDateThread.o \
 					$(bin_dir)/SynTemporaryDataThread.o
 	@echo leader
-	g++ -g $^ -lpthread -lcommon -L $(bin_dir) -o $@
+	g++ -g $^ -lpthread -lcommon -ltinyxml -L $(bin_dir) -o $@
 
 $(bin_dir)/consensus_leader.o : $(leader_dir)/consensus_leader.cpp \
 								$(common_include) \
+								$(tinyxml_include) \
 								$(leader_include)
-	g++ -g -c $< -I $(leader_dir) -I $(common_dir) -o $@
+	g++ -g -c $< -I $(leader_dir) -I $(common_dir) -I $(tinyxml_dir) -o $@
 
 $(bin_dir)/ProcessCmdThread.o : $(leader_dir)/ProcessCmdThread.cpp \
 								$(common_include) \
@@ -74,7 +108,13 @@ $(bin_dir)/follower : $(bin_dir)/ClientProcessClient.o \
 						$(bin_dir)/LeaderInitThread.o \
 						$(bin_dir)/LeaderSynThread.o
 	@echo follower
-	g++ -g $^ -lpthread -lcommon -L $(bin_dir) -o $@
+	g++ -g $^ -lpthread -lcommon -ltinyxml -L $(bin_dir) -o $@
+
+$(bin_dir)/consensus_follower.o : $(follower_dir)/consensus_follower.cpp \
+									$(follower_include) \
+									$(common_include) \
+									$(tinyxml_include)
+	g++ -g -c $< -I $(follower_dir) -I $(common_dir) -I $(tinyxml_dir) -o $@
 
 $(bin_dir)/ClientProcessClient.o : $(follower_dir)/ClientProcessClient.cpp \
 									$(follower_include) \
@@ -86,10 +126,6 @@ $(bin_dir)/ConnectToLeader.o : $(follower_dir)/ConnectToLeader.cpp \
 									$(common_include)
 	g++ -g -c $< -I $(follower_dir) -I $(common_dir) -o $@
 
-$(bin_dir)/consensus_follower.o : $(follower_dir)/consensus_follower.cpp \
-									$(follower_include) \
-									$(common_include)
-	g++ -g -c $< -I $(follower_dir) -I $(common_dir) -o $@
 
 $(bin_dir)/LeaderCmdThread.o : $(follower_dir)/LeaderCmdThread.cpp \
 									$(follower_include) \

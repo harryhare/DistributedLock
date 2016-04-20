@@ -1,0 +1,27 @@
+#!/bin/bash
+leader="../bin/leader"
+follower="../bin/follower"
+leader_conf="leader_conf.xml"
+follower1="follower1.xml"
+follower2="follower2.xml"
+follower3="follower3.xml"
+follower4="follower4.xml"
+follower5="follower5.xml"
+
+#run
+echo start leader...
+$leader $leader_conf >leader.out 2>&1 &
+sleep 1
+echo start follower1...
+$follower $follower1 >follower1.out 2>&1 &
+echo start follower2...
+$follower $follower2 >follower2.out 2>&1 &
+echo start follower3...
+$follower $follower3 >follower3.out 2>&1 &
+echo start follower4...
+$follower $follower4 >follower4.out 2>&1 &
+echo start follower5...
+$follower $follower5 >follower5.out 2>&1 &
+echo done
+
+

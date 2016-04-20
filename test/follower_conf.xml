@@ -1,0 +1,11 @@
+<configure>
+	<leader>
+	    <ip>47.88.34.145</ip>
+		<init_port>8103</init_port>
+		<syn_port>8102</syn_port>
+		<cmd_port>8101</cmd_port>
+	</leader>
+	<follower>
+	    <cmd_port>9101</cmd_port>
+	</follower> 
+</configure>

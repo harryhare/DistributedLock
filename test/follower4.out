@@ -1,0 +1,541 @@
+load configuration
+leader ip:47.88.34.145
+cmd port:8101
+syn port:8102
+init port:8103
+listen port:9104
+follower start
+connect to leader
+thread 1 start
+thread 2 start
+syn init data done
+thread 3 start
+Thread 4 start
+syn:35bytes; operate:1; key:lock001; client:mayue001;i 
+map add:lock001->mayue001
+syn:35bytes; operate:2; key:lock001; client:mayue001;i 
+map rm:lock001->mayue001
+syn:35bytes; operate:1; key:lock000; client:mayue001;i 
+map add:lock000->mayue001
+syn:35bytes; operate:1; key:lock001; client:mayue001;i 
+map add:lock001->mayue001
+syn:35bytes; operate:1; key:lock002; client:mayue001;i 
+map add:lock002->mayue001
+syn:35bytes; operate:1; key:lock003; client:mayue001;i 
+map add:lock003->mayue001
+syn:35bytes; operate:1; key:lock004; client:mayue001;i 
+map add:lock004->mayue001
+syn:35bytes; operate:1; key:lock005; client:mayue001;i 
+map add:lock005->mayue001
+syn:35bytes; operate:1; key:lock006; client:mayue001;i 
+map add:lock006->mayue001
+syn:35bytes; operate:1; key:lock007; client:mayue001;i 
+map add:lock007->mayue001
+syn:35bytes; operate:1; key:lock008; client:mayue001;i 
+map add:lock008->mayue001
+syn:35bytes; operate:1; key:lock009; client:mayue001;i 
+map add:lock009->mayue001
+syn:35bytes; operate:2; key:lock000; client:mayue001;i 
+map rm:lock000->mayue001
+syn:35bytes; operate:2; key:lock001; client:mayue001;i 
+map rm:lock001->mayue001
+syn:35bytes; operate:2; key:lock002; client:mayue001;i 
+map rm:lock002->mayue001
+syn:35bytes; operate:2; key:lock003; client:mayue001;i 
+map rm:lock003->mayue001
+syn:35bytes; operate:2; key:lock004; client:mayue001;i 
+map rm:lock004->mayue001
+syn:35bytes; operate:2; key:lock005; client:mayue001;i 
+map rm:lock005->mayue001
+syn:35bytes; operate:2; key:lock006; client:mayue001;i 
+map rm:lock006->mayue001
+syn:35bytes; operate:2; key:lock007; client:mayue001;i 
+map rm:lock007->mayue001
+syn:35bytes; operate:2; key:lock008; client:mayue001;i 
+map rm:lock008->mayue001
+syn:35bytes; operate:2; key:lock009; client:mayue001;i 
+map rm:lock009->mayue001
+syn:35bytes; operate:1; key:lock001; client:mayue001;i 
+map add:lock001->mayue001
+syn:35bytes; operate:2; key:lock001; client:mayue001;i 
+map rm:lock001->mayue001
+syn:35bytes; operate:1; key:lock000; client:mayue001;i 
+map add:lock000->mayue001
+syn:35bytes; operate:1; key:lock001; client:mayue001;i 
+map add:lock001->mayue001
+syn:35bytes; operate:1; key:lock002; client:mayue001;i 
+map add:lock002->mayue001
+syn:35bytes; operate:1; key:lock003; client:mayue001;i 
+map add:lock003->mayue001
+syn:35bytes; operate:1; key:lock004; client:mayue001;i 
+map add:lock004->mayue001
+syn:35bytes; operate:1; key:lock005; client:mayue001;i 
+map add:lock005->mayue001
+syn:35bytes; operate:1; key:lock006; client:mayue001;i 
+map add:lock006->mayue001
+syn:35bytes; operate:1; key:lock007; client:mayue001;i 
+map add:lock007->mayue001
+syn:35bytes; operate:1; key:lock008; client:mayue001;i 
+map add:lock008->mayue001
+syn:35bytes; operate:1; key:lock009; client:mayue001;i 
+map add:lock009->mayue001
+syn:35bytes; operate:2; key:lock000; client:mayue001;i 
+map rm:lock000->mayue001
+syn:35bytes; operate:2; key:lock001; client:mayue001;i 
+map rm:lock001->mayue001
+syn:35bytes; operate:2; key:lock002; client:mayue001;i 
+map rm:lock002->mayue001
+syn:35bytes; operate:2; key:lock003; client:mayue001;i 
+map rm:lock003->mayue001
+syn:35bytes; operate:2; key:lock004; client:mayue001;i 
+map rm:lock004->mayue001
+syn:35bytes; operate:2; key:lock005; client:mayue001;i 
+map rm:lock005->mayue001
+syn:35bytes; operate:2; key:lock006; client:mayue001;i 
+map rm:lock006->mayue001
+syn:35bytes; operate:2; key:lock007; client:mayue001;i 
+map rm:lock007->mayue001
+syn:35bytes; operate:2; key:lock008; client:mayue001;i 
+map rm:lock008->mayue001
+syn:35bytes; operate:2; key:lock009; client:mayue001;i 
+map rm:lock009->mayue001
+syn:35bytes; operate:1; key:lock001; client:mayue001;i 
+map add:lock001->mayue001
+syn:35bytes; operate:2; key:lock001; client:mayue001;i 
+map rm:lock001->mayue001
+syn:35bytes; operate:1; key:lock000; client:mayue001;i 
+map add:lock000->mayue001
+syn:35bytes; operate:1; key:lock001; client:mayue001;i 
+map add:lock001->mayue001
+syn:35bytes; operate:1; key:lock002; client:mayue001;i 
+map add:lock002->mayue001
+syn:35bytes; operate:1; key:lock003; client:mayue001;i 
+map add:lock003->mayue001
+syn:35bytes; operate:1; key:lock004; client:mayue001;i 
+map add:lock004->mayue001
+syn:35bytes; operate:1; key:lock005; client:mayue001;i 
+map add:lock005->mayue001
+syn:35bytes; operate:1; key:lock006; client:mayue001;i 
+map add:lock006->mayue001
+syn:35bytes; operate:1; key:lock007; client:mayue001;i 
+map add:lock007->mayue001
+syn:35bytes; operate:1; key:lock008; client:mayue001;i 
+map add:lock008->mayue001
+syn:35bytes; operate:1; key:lock009; client:mayue001;i 
+map add:lock009->mayue001
+syn:35bytes; operate:2; key:lock000; client:mayue001;i 
+map rm:lock000->mayue001
+syn:35bytes; operate:2; key:lock001; client:mayue001;i 
+map rm:lock001->mayue001
+syn:35bytes; operate:2; key:lock002; client:mayue001;i 
+map rm:lock002->mayue001
+syn:35bytes; operate:2; key:lock003; client:mayue001;i 
+map rm:lock003->mayue001
+syn:35bytes; operate:2; key:lock004; client:mayue001;i 
+map rm:lock004->mayue001
+syn:35bytes; operate:2; key:lock005; client:mayue001;i 
+map rm:lock005->mayue001
+syn:35bytes; operate:2; key:lock006; client:mayue001;i 
+map rm:lock006->mayue001
+syn:35bytes; operate:2; key:lock007; client:mayue001;i 
+map rm:lock007->mayue001
+syn:35bytes; operate:2; key:lock008; client:mayue001;i 
+map rm:lock008->mayue001
+syn:35bytes; operate:2; key:lock009; client:mayue001;i 
+map rm:lock009->mayue001
+syn:35bytes; operate:1; key:lock001; client:mayue001;i 
+map add:lock001->mayue001
+syn:35bytes; operate:2; key:lock001; client:mayue001;i 
+map rm:lock001->mayue001
+syn:35bytes; operate:1; key:lock000; client:mayue001;i 
+map add:lock000->mayue001
+syn:35bytes; operate:1; key:lock001; client:mayue001;i 
+map add:lock001->mayue001
+syn:35bytes; operate:1; key:lock002; client:mayue001;i 
+map add:lock002->mayue001
+syn:35bytes; operate:1; key:lock003; client:mayue001;i 
+map add:lock003->mayue001
+syn:35bytes; operate:1; key:lock004; client:mayue001;i 
+map add:lock004->mayue001
+syn:35bytes; operate:1; key:lock005; client:mayue001;i 
+map add:lock005->mayue001
+syn:35bytes; operate:1; key:lock006; client:mayue001;i 
+map add:lock006->mayue001
+syn:35bytes; operate:1; key:lock007; client:mayue001;i 
+map add:lock007->mayue001
+syn:35bytes; operate:1; key:lock008; client:mayue001;i 
+map add:lock008->mayue001
+syn:35bytes; operate:1; key:lock009; client:mayue001;i 
+map add:lock009->mayue001
+syn:35bytes; operate:2; key:lock000; client:mayue001;i 
+map rm:lock000->mayue001
+syn:35bytes; operate:2; key:lock001; client:mayue001;i 
+map rm:lock001->mayue001
+syn:35bytes; operate:2; key:lock002; client:mayue001;i 
+map rm:lock002->mayue001
+syn:35bytes; operate:2; key:lock003; client:mayue001;i 
+map rm:lock003->mayue001
+syn:35bytes; operate:2; key:lock004; client:mayue001;i 
+map rm:lock004->mayue001
+syn:35bytes; operate:2; key:lock005; client:mayue001;i 
+map rm:lock005->mayue001
+syn:35bytes; operate:2; key:lock006; client:mayue001;i 
+map rm:lock006->mayue001
+syn:35bytes; operate:2; key:lock007; client:mayue001;i 
+map rm:lock007->mayue001
+syn:35bytes; operate:2; key:lock008; client:mayue001;i 
+map rm:lock008->mayue001
+syn:35bytes; operate:2; key:lock009; client:mayue001;i 
+map rm:lock009->mayue001
+syn:35bytes; operate:1; key:lock001; client:mayue001;i 
+map add:lock001->mayue001
+syn:35bytes; operate:2; key:lock001; client:mayue001;i 
+map rm:lock001->mayue001
+syn:35bytes; operate:1; key:lock000; client:mayue001;i 
+map add:lock000->mayue001
+syn:35bytes; operate:1; key:lock001; client:mayue001;i 
+map add:lock001->mayue001
+syn:35bytes; operate:1; key:lock002; client:mayue001;i 
+map add:lock002->mayue001
+syn:35bytes; operate:1; key:lock003; client:mayue001;i 
+map add:lock003->mayue001
+syn:35bytes; operate:1; key:lock004; client:mayue001;i 
+map add:lock004->mayue001
+syn:35bytes; operate:1; key:lock005; client:mayue001;i 
+map add:lock005->mayue001
+syn:35bytes; operate:1; key:lock006; client:mayue001;i 
+map add:lock006->mayue001
+syn:35bytes; operate:1; key:lock007; client:mayue001;i 
+map add:lock007->mayue001
+syn:35bytes; operate:1; key:lock008; client:mayue001;i 
+map add:lock008->mayue001
+syn:35bytes; operate:1; key:lock009; client:mayue001;i 
+map add:lock009->mayue001
+syn:35bytes; operate:2; key:lock000; client:mayue001;i 
+map rm:lock000->mayue001
+syn:35bytes; operate:2; key:lock001; client:mayue001;i 
+map rm:lock001->mayue001
+syn:35bytes; operate:2; key:lock002; client:mayue001;i 
+map rm:lock002->mayue001
+syn:35bytes; operate:2; key:lock003; client:mayue001;i 
+map rm:lock003->mayue001
+syn:35bytes; operate:2; key:lock004; client:mayue001;i 
+map rm:lock004->mayue001
+syn:35bytes; operate:2; key:lock005; client:mayue001;i 
+map rm:lock005->mayue001
+syn:35bytes; operate:2; key:lock006; client:mayue001;i 
+map rm:lock006->mayue001
+syn:35bytes; operate:2; key:lock007; client:mayue001;i 
+map rm:lock007->mayue001
+syn:35bytes; operate:2; key:lock008; client:mayue001;i 
+map rm:lock008->mayue001
+syn:35bytes; operate:2; key:lock009; client:mayue001;i 
+map rm:lock009->mayue001
+syn:35bytes; operate:1; key:lock001; client:mayue001;i 
+map add:lock001->mayue001
+syn:35bytes; operate:2; key:lock001; client:mayue001;i 
+map rm:lock001->mayue001
+syn:35bytes; operate:1; key:lock000; client:mayue001;i 
+map add:lock000->mayue001
+syn:35bytes; operate:1; key:lock001; client:mayue001;i 
+map add:lock001->mayue001
+syn:35bytes; operate:1; key:lock002; client:mayue001;i 
+map add:lock002->mayue001
+syn:35bytes; operate:1; key:lock003; client:mayue001;i 
+map add:lock003->mayue001
+syn:35bytes; operate:1; key:lock004; client:mayue001;i 
+map add:lock004->mayue001
+syn:35bytes; operate:1; key:lock005; client:mayue001;i 
+map add:lock005->mayue001
+syn:35bytes; operate:1; key:lock006; client:mayue001;i 
+map add:lock006->mayue001
+syn:35bytes; operate:1; key:lock007; client:mayue001;i 
+map add:lock007->mayue001
+syn:35bytes; operate:1; key:lock008; client:mayue001;i 
+map add:lock008->mayue001
+syn:35bytes; operate:1; key:lock009; client:mayue001;i 
+map add:lock009->mayue001
+syn:35bytes; operate:2; key:lock000; client:mayue001;i 
+map rm:lock000->mayue001
+syn:35bytes; operate:2; key:lock001; client:mayue001;i 
+map rm:lock001->mayue001
+syn:35bytes; operate:2; key:lock002; client:mayue001;i 
+map rm:lock002->mayue001
+syn:35bytes; operate:2; key:lock003; client:mayue001;i 
+map rm:lock003->mayue001
+syn:35bytes; operate:2; key:lock004; client:mayue001;i 
+map rm:lock004->mayue001
+syn:35bytes; operate:2; key:lock005; client:mayue001;i 
+map rm:lock005->mayue001
+syn:35bytes; operate:2; key:lock006; client:mayue001;i 
+map rm:lock006->mayue001
+syn:35bytes; operate:2; key:lock007; client:mayue001;i 
+map rm:lock007->mayue001
+syn:35bytes; operate:2; key:lock008; client:mayue001;i 
+map rm:lock008->mayue001
+syn:35bytes; operate:2; key:lock009; client:mayue001;i 
+map rm:lock009->mayue001
+syn:35bytes; operate:1; key:lock001; client:mayue001;i 
+map add:lock001->mayue001
+syn:35bytes; operate:2; key:lock001; client:mayue001;i 
+map rm:lock001->mayue001
+syn:35bytes; operate:1; key:lock000; client:mayue001;i 
+map add:lock000->mayue001
+syn:35bytes; operate:1; key:lock001; client:mayue001;i 
+map add:lock001->mayue001
+syn:35bytes; operate:1; key:lock002; client:mayue001;i 
+map add:lock002->mayue001
+syn:35bytes; operate:1; key:lock003; client:mayue001;i 
+map add:lock003->mayue001
+syn:35bytes; operate:1; key:lock004; client:mayue001;i 
+map add:lock004->mayue001
+syn:35bytes; operate:1; key:lock005; client:mayue001;i 
+map add:lock005->mayue001
+syn:35bytes; operate:1; key:lock006; client:mayue001;i 
+map add:lock006->mayue001
+syn:35bytes; operate:1; key:lock007; client:mayue001;i 
+map add:lock007->mayue001
+syn:35bytes; operate:1; key:lock008; client:mayue001;i 
+map add:lock008->mayue001
+syn:35bytes; operate:1; key:lock009; client:mayue001;i 
+map add:lock009->mayue001
+syn:35bytes; operate:2; key:lock000; client:mayue001;i 
+map rm:lock000->mayue001
+syn:35bytes; operate:2; key:lock001; client:mayue001;i 
+map rm:lock001->mayue001
+syn:35bytes; operate:2; key:lock002; client:mayue001;i 
+map rm:lock002->mayue001
+syn:35bytes; operate:2; key:lock003; client:mayue001;i 
+map rm:lock003->mayue001
+syn:35bytes; operate:2; key:lock004; client:mayue001;i 
+map rm:lock004->mayue001
+syn:35bytes; operate:2; key:lock005; client:mayue001;i 
+map rm:lock005->mayue001
+syn:35bytes; operate:2; key:lock006; client:mayue001;i 
+map rm:lock006->mayue001
+syn:35bytes; operate:2; key:lock007; client:mayue001;i 
+map rm:lock007->mayue001
+syn:35bytes; operate:2; key:lock008; client:mayue001;i 
+map rm:lock008->mayue001
+syn:35bytes; operate:2; key:lock009; client:mayue001;i 
+map rm:lock009->mayue001
+incoming fd 7 from 127.0.0.1:53824
+recv:31bytes; from:7; -client_id:mayue001; -key:lock001; -operate:3 own;
+recv: 12bytes; from leader; ret:1; client_fd:7
+recv:31bytes; from:7; -client_id:mayue001; -key:lock001; -operate:1 try lock;
+syn:35bytes; operate:1; key:lock001; client:mayue001;i 
+recv: 12bytes; from leader; ret:0; client_fd:7
+map add:lock001->mayue001
+recv:31bytes; from:7; -client_id:mayue001; -key:lock001; -operate:3 own;
+recv: 12bytes; from leader; ret:0; client_fd:7
+recv:31bytes; from:7; -client_id:mayue001; -key:lock001; -operate:2 try unlock;
+syn:35bytes; operate:2; key:lock001; client:mayue001;i 
+map rm:lock001->mayue001
+recv: 12bytes; from leader; ret:0; client_fd:7
+recv:31bytes; from:7; -client_id:mayue001; -key:lock001; -operate:3 own;
+recv: 12bytes; from leader; ret:1; client_fd:7
+recv:31bytes; from:7; -client_id:mayue001; -key:lock000; -operate:1 try lock;
+syn:35bytes; operate:1; key:lock000; client:mayue001;i 
+map add:lock000->mayue001
+recv: 12bytes; from leader; ret:0; client_fd:7
+recv:31bytes; from:7; -client_id:mayue001; -key:lock000; -operate:1 try lock;
+recv: 12bytes; from leader; ret:1; client_fd:7
+recv:31bytes; from:7; -client_id:mayue001; -key:lock001; -operate:1 try lock;
+syn:35bytes; operate:1; key:lock001; client:mayue001;i 
+map add:lock001->mayue001
+recv: 12bytes; from leader; ret:0; client_fd:7
+recv:31bytes; from:7; -client_id:mayue001; -key:lock001; -operate:1 try lock;
+recv: 12bytes; from leader; ret:1; client_fd:7
+recv:31bytes; from:7; -client_id:mayue001; -key:lock002; -operate:1 try lock;
+syn:35bytes; operate:1; key:lock002; client:mayue001;i 
+map add:lock002->mayue001
+recv: 12bytes; from leader; ret:0; client_fd:7
+recv:31bytes; from:7; -client_id:mayue001; -key:lock002; -operate:1 try lock;
+recv: 12bytes; from leader; ret:1; client_fd:7
+recv:31bytes; from:7; -client_id:mayue001; -key:lock003; -operate:1 try lock;
+syn:35bytes; operate:1; key:lock003; client:mayue001;i 
+recv: 12bytes; from leader; ret:0; client_fd:7
+map add:lock003->mayue001
+recv:31bytes; from:7; -client_id:mayue001; -key:lock003; -operate:1 try lock;
+recv: 12bytes; from leader; ret:1; client_fd:7
+recv:31bytes; from:7; -client_id:mayue001; -key:lock004; -operate:1 try lock;
+syn:35bytes; operate:1; key:lock004; client:mayue001;i 
+map add:lock004->mayue001
+recv: 12bytes; from leader; ret:0; client_fd:7
+recv:31bytes; from:7; -client_id:mayue001; -key:lock004; -operate:1 try lock;
+recv: 12bytes; from leader; ret:1; client_fd:7
+recv:31bytes; from:7; -client_id:mayue001; -key:lock005; -operate:1 try lock;
+syn:35bytes; operate:1; key:lock005; client:mayue001;i 
+map add:lock005->mayue001
+recv: 12bytes; from leader; ret:0; client_fd:7
+recv:31bytes; from:7; -client_id:mayue001; -key:lock005; -operate:1 try lock;
+recv: 12bytes; from leader; ret:1; client_fd:7
+recv:31bytes; from:7; -client_id:mayue001; -key:lock006; -operate:1 try lock;
+syn:35bytes; operate:1; key:lock006; client:mayue001;i 
+map add:lock006->mayue001
+recv: 12bytes; from leader; ret:0; client_fd:7
+recv:31bytes; from:7; -client_id:mayue001; -key:lock006; -operate:1 try lock;
+recv: 12bytes; from leader; ret:1; client_fd:7
+recv:31bytes; from:7; -client_id:mayue001; -key:lock007; -operate:1 try lock;
+syn:35bytes; operate:1; key:lock007; client:mayue001;i 
+map add:lock007->mayue001
+recv: 12bytes; from leader; ret:0; client_fd:7
+recv:31bytes; from:7; -client_id:mayue001; -key:lock007; -operate:1 try lock;
+recv: 12bytes; from leader; ret:1; client_fd:7
+recv:31bytes; from:7; -client_id:mayue001; -key:lock008; -operate:1 try lock;
+syn:35bytes; operate:1; key:lock008; client:mayue001;i 
+map add:lock008->mayue001
+recv: 12bytes; from leader; ret:0; client_fd:7
+recv:31bytes; from:7; -client_id:mayue001; -key:lock008; -operate:1 try lock;
+recv: 12bytes; from leader; ret:1; client_fd:7
+recv:31bytes; from:7; -client_id:mayue001; -key:lock009; -operate:1 try lock;
+syn:35bytes; operate:1; key:lock009; client:mayue001;i 
+map add:lock009->mayue001
+recv: 12bytes; from leader; ret:0; client_fd:7
+recv:31bytes; from:7; -client_id:mayue001; -key:lock009; -operate:1 try lock;
+recv: 12bytes; from leader; ret:1; client_fd:7
+recv:31bytes; from:7; -client_id:mayue001; -key:lock000; -operate:3 own;
+recv: 12bytes; from leader; ret:0; client_fd:7
+recv:31bytes; from:7; -client_id:mayue001; -key:lock001; -operate:3 own;
+recv: 12bytes; from leader; ret:0; client_fd:7
+recv:31bytes; from:7; -client_id:mayue001; -key:lock002; -operate:3 own;
+recv: 12bytes; from leader; ret:0; client_fd:7
+recv:31bytes; from:7; -client_id:mayue001; -key:lock003; -operate:3 own;
+recv: 12bytes; from leader; ret:0; client_fd:7
+recv:31bytes; from:7; -client_id:mayue001; -key:lock004; -operate:3 own;
+recv: 12bytes; from leader; ret:0; client_fd:7
+recv:31bytes; from:7; -client_id:mayue001; -key:lock005; -operate:3 own;
+recv: 12bytes; from leader; ret:0; client_fd:7
+recv:31bytes; from:7; -client_id:mayue001; -key:lock006; -operate:3 own;
+recv: 12bytes; from leader; ret:0; client_fd:7
+recv:31bytes; from:7; -client_id:mayue001; -key:lock007; -operate:3 own;
+recv: 12bytes; from leader; ret:0; client_fd:7
+recv:31bytes; from:7; -client_id:mayue001; -key:lock008; -operate:3 own;
+recv: 12bytes; from leader; ret:0; client_fd:7
+recv:31bytes; from:7; -client_id:mayue001; -key:lock009; -operate:3 own;
+recv: 12bytes; from leader; ret:0; client_fd:7
+recv:31bytes; from:7; -client_id:mayue001; -key:lock000; -operate:2 try unlock;
+syn:35bytes; operate:2; key:lock000; client:mayue001;i 
+map rm:lock000->mayue001
+recv: 12bytes; from leader; ret:0; client_fd:7
+recv:31bytes; from:7; -client_id:mayue001; -key:lock000; -operate:2 try unlock;
+recv: 12bytes; from leader; ret:1; client_fd:7
+recv:31bytes; from:7; -client_id:mayue001; -key:lock001; -operate:2 try unlock;
+syn:35bytes; operate:2; key:lock001; client:mayue001;i 
+map rm:lock001->mayue001
+recv: 12bytes; from leader; ret:0; client_fd:7
+recv:31bytes; from:7; -client_id:mayue001; -key:lock001; -operate:2 try unlock;
+recv: 12bytes; from leader; ret:1; client_fd:7
+recv:31bytes; from:7; -client_id:mayue001; -key:lock002; -operate:2 try unlock;
+syn:35bytes; operate:2; key:lock002; client:mayue001;i 
+map rm:lock002->mayue001
+recv: 12bytes; from leader; ret:0; client_fd:7
+recv:31bytes; from:7; -client_id:mayue001; -key:lock002; -operate:2 try unlock;
+recv: 12bytes; from leader; ret:1; client_fd:7
+recv:31bytes; from:7; -client_id:mayue001; -key:lock003; -operate:2 try unlock;
+syn:35bytes; operate:2; key:lock003; client:mayue001;i 
+map rm:lock003->mayue001
+recv: 12bytes; from leader; ret:0; client_fd:7
+recv:31bytes; from:7; -client_id:mayue001; -key:lock003; -operate:2 try unlock;
+recv: 12bytes; from leader; ret:1; client_fd:7
+recv:31bytes; from:7; -client_id:mayue001; -key:lock004; -operate:2 try unlock;
+syn:35bytes; operate:2; key:lock004; client:mayue001;i 
+map rm:lock004->mayue001
+recv: 12bytes; from leader; ret:0; client_fd:7
+recv:31bytes; from:7; -client_id:mayue001; -key:lock004; -operate:2 try unlock;
+recv: 12bytes; from leader; ret:1; client_fd:7
+recv:31bytes; from:7; -client_id:mayue001; -key:lock005; -operate:2 try unlock;
+syn:35bytes; operate:2; key:lock005; client:mayue001;i 
+map rm:lock005->mayue001
+recv: 12bytes; from leader; ret:0; client_fd:7
+recv:31bytes; from:7; -client_id:mayue001; -key:lock005; -operate:2 try unlock;
+recv: 12bytes; from leader; ret:1; client_fd:7
+recv:31bytes; from:7; -client_id:mayue001; -key:lock006; -operate:2 try unlock;
+syn:35bytes; operate:2; key:lock006; client:mayue001;i 
+map rm:lock006->mayue001
+recv: 12bytes; from leader; ret:0; client_fd:7
+recv:31bytes; from:7; -client_id:mayue001; -key:lock006; -operate:2 try unlock;
+recv: 12bytes; from leader; ret:1; client_fd:7
+recv:31bytes; from:7; -client_id:mayue001; -key:lock007; -operate:2 try unlock;
+syn:35bytes; operate:2; key:lock007; client:mayue001;i 
+map rm:lock007->mayue001
+recv: 12bytes; from leader; ret:0; client_fd:7
+recv:31bytes; from:7; -client_id:mayue001; -key:lock007; -operate:2 try unlock;
+recv: 12bytes; from leader; ret:1; client_fd:7
+recv:31bytes; from:7; -client_id:mayue001; -key:lock008; -operate:2 try unlock;
+syn:35bytes; operate:2; key:lock008; client:mayue001;i 
+map rm:lock008->mayue001
+recv: 12bytes; from leader; ret:0; client_fd:7
+recv:31bytes; from:7; -client_id:mayue001; -key:lock008; -operate:2 try unlock;
+recv: 12bytes; from leader; ret:1; client_fd:7
+recv:31bytes; from:7; -client_id:mayue001; -key:lock009; -operate:2 try unlock;
+syn:35bytes; operate:2; key:lock009; client:mayue001;i 
+map rm:lock009->mayue001
+recv: 12bytes; from leader; ret:0; client_fd:7
+recv:31bytes; from:7; -client_id:mayue001; -key:lock009; -operate:2 try unlock;
+recv: 12bytes; from leader; ret:1; client_fd:7
+recv:31bytes; from:7; -client_id:mayue001; -key:lock000; -operate:3 own;
+recv: 12bytes; from leader; ret:1; client_fd:7
+recv:31bytes; from:7; -client_id:mayue001; -key:lock001; -operate:3 own;
+recv: 12bytes; from leader; ret:1; client_fd:7
+recv:31bytes; from:7; -client_id:mayue001; -key:lock002; -operate:3 own;
+recv: 12bytes; from leader; ret:1; client_fd:7
+recv:31bytes; from:7; -client_id:mayue001; -key:lock003; -operate:3 own;
+recv: 12bytes; from leader; ret:1; client_fd:7
+recv:31bytes; from:7; -client_id:mayue001; -key:lock004; -operate:3 own;
+recv: 12bytes; from leader; ret:1; client_fd:7
+recv:31bytes; from:7; -client_id:mayue001; -key:lock005; -operate:3 own;
+recv: 12bytes; from leader; ret:1; client_fd:7
+recv:31bytes; from:7; -client_id:mayue001; -key:lock006; -operate:3 own;
+recv: 12bytes; from leader; ret:1; client_fd:7
+recv:31bytes; from:7; -client_id:mayue001; -key:lock007; -operate:3 own;
+recv: 12bytes; from leader; ret:1; client_fd:7
+recv:31bytes; from:7; -client_id:mayue001; -key:lock008; -operate:3 own;
+recv: 12bytes; from leader; ret:1; client_fd:7
+recv:31bytes; from:7; -client_id:mayue001; -key:lock009; -operate:3 own;
+recv: 12bytes; from leader; ret:1; client_fd:7
+closed fd 7
+syn:35bytes; operate:1; key:lock001; client:mayue001;i 
+map add:lock001->mayue001
+syn:35bytes; operate:2; key:lock001; client:mayue001;i 
+map rm:lock001->mayue001
+syn:35bytes; operate:1; key:lock000; client:mayue001;i 
+map add:lock000->mayue001
+syn:35bytes; operate:1; key:lock001; client:mayue001;i 
+map add:lock001->mayue001
+syn:35bytes; operate:1; key:lock002; client:mayue001;i 
+map add:lock002->mayue001
+syn:35bytes; operate:1; key:lock003; client:mayue001;i 
+map add:lock003->mayue001
+syn:35bytes; operate:1; key:lock004; client:mayue001;i 
+map add:lock004->mayue001
+syn:35bytes; operate:1; key:lock005; client:mayue001;i 
+map add:lock005->mayue001
+syn:35bytes; operate:1; key:lock006; client:mayue001;i 
+map add:lock006->mayue001
+syn:35bytes; operate:1; key:lock007; client:mayue001;i 
+map add:lock007->mayue001
+syn:35bytes; operate:1; key:lock008; client:mayue001;i 
+map add:lock008->mayue001
+syn:35bytes; operate:1; key:lock009; client:mayue001;i 
+map add:lock009->mayue001
+syn:35bytes; operate:2; key:lock000; client:mayue001;i 
+map rm:lock000->mayue001
+syn:35bytes; operate:2; key:lock001; client:mayue001;i 
+map rm:lock001->mayue001
+syn:35bytes; operate:2; key:lock002; client:mayue001;i 
+map rm:lock002->mayue001
+syn:35bytes; operate:2; key:lock003; client:mayue001;i 
+map rm:lock003->mayue001
+syn:35bytes; operate:2; key:lock004; client:mayue001;i 
+map rm:lock004->mayue001
+syn:35bytes; operate:2; key:lock005; client:mayue001;i 
+map rm:lock005->mayue001
+syn:35bytes; operate:2; key:lock006; client:mayue001;i 
+map rm:lock006->mayue001
+syn:35bytes; operate:2; key:lock007; client:mayue001;i 
+map rm:lock007->mayue001
+syn:35bytes; operate:2; key:lock008; client:mayue001;i 
+map rm:lock008->mayue001
+syn:35bytes; operate:2; key:lock009; client:mayue001;i 
+map rm:lock009->mayue001

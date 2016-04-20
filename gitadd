@@ -1,5 +1,7 @@
 #!/bin/bash
 git add gitadd
+git add makefile
+git add test/
 git add common/src
 git add tinyxml/src
 git add consensus_client/src
