@@ -24,11 +24,11 @@ const int LEADER_PORT_CALL	= 8101;
 const int LEADER_PORT_SYN	= 8102;
 const int LEADER_PORT_INIT	= 8103;
 const char LEADER_IP[]	= "127.0.0.1";
-const int SERVER_PORT 	= 9101;
 
-const char SERVER_IP[] 	= "47.88.34.145";
-//const char SERVER_IP[] 	= "127.0.0.1";
-
+int SERVER_PORT 	= 9101;
+//const char SERVER_IP[] 	= "47.88.34.145";
+char SERVER_IP[] 	= "127.0.0.1";
+char USER_NAME[]	= "mayue001";
 
 void test()
 {
@@ -82,27 +82,69 @@ void test2()
 
 
 int main(int argc,char**argv) {
-	if(argc!=2)
+//	if(argc!=2)
+//	{
+//		cout << "client [username]"<<endl;
+//		return 0;
+//	}
+	char*user_name = USER_NAME;
+	char*server_ip = SERVER_IP;
+	int server_port= SERVER_PORT;
+	int ch;
+	bool simple_mode=false;
+	opterr=0;
+	while( (ch=getopt(argc,argv,"u:h:p:s")) != -1)
 	{
-		cout << "client [username]"<<endl;
-		return 0;
+		switch(ch)
+		{
+			case 'u':
+				//cout<<optarg<<endl;
+				user_name=optarg;
+				break;
+			case 'h':
+				//cout<<optarg<<endl;
+				server_ip=optarg;
+				break;
+			case 'p':
+				//cout<<optarg<<endl;
+				server_port=atoi(optarg);
+				break;
+			case 's':
+				simple_mode=true;
+				break;
+			default:
+				cout<<"usage:"<<endl;
+				cout<<"client [-h ip] [-p port] [-u usenrame] [-s]"<<endl;
+				cout<<"\t-h:host_ip"<<endl;
+				cout<<"\t-p:host_port"<<endl;
+				cout<<"\t-u:user name"<<endl;
+				cout<<"\t-s:simple mode, no hints"<<endl;
+		}
 	}
 
-	cout <<"connect to server ..."<<endl;
+	if(!simple_mode)
+	{
+		cout<<"server: "<<server_ip<<":"<<server_port<<endl;
+		cout<<"log in as: "<<user_name<<endl;
+
+		cout <<"connect to server ..."<<endl;
+	}
 	int ret;
 
-	DistributedLock lock1(SERVER_IP,SERVER_PORT,argv[1]);
+	DistributedLock lock1(server_ip,server_port, user_name);
 	ret=lock1.ConnectToServer();
-	if(ret)
+	if(ret&&!simple_mode)
 	{
 		cout <<"login success"<<endl;
-		cout <<"welcome "<<argv[1]<<endl;
+		cout <<"welcome "<<user_name<<endl;
 	}
-
-	cout << "usage:" << endl;
-	cout << "	lock [lockname]"<<endl;
-	cout << "	unlock [lockname]"<<endl;
-	cout << "	ownlock [lockname]"<<endl;
+	if(!simple_mode)
+	{
+		cout << "usage:" << endl;
+		cout << "	lock [lockname]"<<endl;
+		cout << "	unlock [lockname]"<<endl;
+		cout << "	ownlock [lockname]"<<endl;
+	}
 	//test();
 	//test2();
 	static char buf[1024];
@@ -164,7 +206,7 @@ int main(int argc,char**argv) {
 		}
 	}
 	ret=lock1.DisconnectFromServer();
-	if(ret)
+	if(ret&&!simple_mode)
 	{
 		cout<<"Disconnect from server"<<endl;
 	}
