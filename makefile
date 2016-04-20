@@ -3,6 +3,7 @@ tinyxml_dir=./tinyxml/src
 leader_dir=./consensus_leader/src
 follower_dir=./consensus_follower/src
 client_dir=./consensus_client/src
+test_dir=./consensus_test/src
 bin_dir=./bin
 
 common_include= $(common_dir)/*.h
@@ -10,6 +11,7 @@ tinyxml_include=$(tinyxml_dir)/*.h
 leader_include= $(leader_dir)/*.h
 follower_include= $(follower_dir)/*.h
 client_include= $(client_dir)/*.h
+test_include= $(test_dir)/*.h
 
 .PHONY: default
 default:
@@ -25,7 +27,8 @@ all :   $(bin_dir)/libcommon.a \
 		$(bin_dir)/libtinyxml.a \
 		$(bin_dir)/leader \
 		$(bin_dir)/follower  \
-		$(bin_dir)/client
+		$(bin_dir)/client \
+		$(bin_dir)/test
 	@echo "done"
 
 ########################################################################
@@ -160,6 +163,24 @@ $(bin_dir)/DistributedLock.o : $(client_dir)/DistributedLock.cpp \
 								$(common_inlude) \
 								$(client_include)
 	g++ -g -c $< -I $(common_dir) -I $(client_dir) -o $@
+########################################################################
+#                            test
+########################################################################
+$(bin_dir)/test:$(bin_dir)/consensus_test.o \
+					$(bin_dir)/DistributedLock.o
+	@echo test
+	g++ -g $^ -L $(bin_dir) -lcommon -o $@
+
+$(bin_dir)/consensus_test.o:$(test_dir)/consensus_test.cpp \
+								$(common_inlude) \
+								$(test_include)
+	g++ -g -c $< -I $(common_dir) -I $(test_dir) -o $@
+
+$(bin_dir)/DistributedLock.o : $(test_dir)/DistributedLock.cpp \
+								$(common_inlude) \
+								$(test_include)
+	g++ -g -c $< -I $(common_dir) -I $(test_dir) -o $@
+##########################################################################
 .PHONY: clean
 clean:
 	-rm -r ./bin

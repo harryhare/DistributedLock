@@ -32,7 +32,7 @@ void test()
 
 	int ret;
 
-	int max=20;
+	int max=100;
 	for(int i=0;i<max;i++)
 	{
 		clients[i]=new DistributedLock(server_ip,server_port[i%5],user_name[i]);
