@@ -173,17 +173,34 @@ void* ClientProcessClient(void*)
 								cout<<" own;"<<endl;
 							}
 
-
-							MessageE me;
-							me.extend=i;
-							me.operate=m.operate;
-							me.client_id=m.client_id;
-							me.lock_key=m.lock_key;
-							static char buf_send[256];
-							int len=SerializeE(buf_send,me);
-							SendWhole(fd_leader,buf_send,len);
-							//int ret=0;//ok
-							//send(i,&ret,sizeof(int),0);
+							if(m.operate==1||m.operate==2)
+							{
+								MessageE me;
+								me.extend=i;
+								me.operate=m.operate;
+								me.client_id=m.client_id;
+								me.lock_key=m.lock_key;
+								static char buf_send[256];
+								int len=SerializeE(buf_send,me);
+								SendWhole(fd_leader,buf_send,len);
+							}
+							else if(m.operate==3)
+							{
+								int ret=0;//ok
+								map<string,string>::iterator it;
+								pthread_mutex_lock(&map_mutex);
+								it=key_map.find(m.lock_key);
+								if(it!=key_map.end() && it->second==m.client_id)
+								{
+									ret=0;
+								}
+								else
+								{
+									ret=1;
+								}
+								pthread_mutex_unlock(&map_mutex);
+								send(i,&ret,sizeof(int),0);
+							}
 						}
 					}
 				}
