@@ -7,6 +7,7 @@ git add tinyxml/src
 git add consensus_client/src
 git add consensus_follower/src
 git add consensus_leader/src
+git add consensus_test/src
 git add consensus_follower/follower_conf.xml
 git add consensus_leader/leader_conf.xml
 echo "done"
